@@ -1,0 +1,12 @@
+.title {
+    color: brown;
+    font-style: italic;
+}
+
+.cumplido {
+    color: green;
+}
+
+.fallido {
+    color: red;
+}
