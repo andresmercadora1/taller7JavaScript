@@ -1,5 +1,5 @@
 const h1 = document.createElement("h1");
-h1.innerText = "my presentation";
+h1.innerText = "My presentation";
 h1.style.color = 'red';
 
 const div = document.querySelector("div");
