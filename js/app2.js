@@ -1,9 +1,7 @@
 const ol = document.querySelector('ol');
-
 const ul = document.createElement('ul');
 ul.setAttribute('class', 'listado');
-
-const cont = ol.children.length; // 4
+const cont = ol.children.length;
 
 for (let i = 0; i < cont; i++) {
     ul.append(ol.children[0])

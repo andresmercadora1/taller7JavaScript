@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cascading Dropdown Example</h1>
+    <form name="form1" id="form1" action="/action_page.php">
+        Subjects: <select name="subject" id="subject">
+            <option value="" selected="selected">Select subject</option>
+        </select>
+    <br><br>
+    Topics: <select name="topic" id="topic">
+        <option value="" selected="selected">Please select subject first</option>
+    </select>
+    <br><br>
+    Chapters: <select name="chapter" id="chapter">
+        <option value="" selected="selected">Please select topic first</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">  
+    </form>
+
+    <script>
+    var subjectObject = {
+
+    "Front-end": {
+        "HTML": ["Links", "Images", "Tables", "Lists"],
+        "CSS": ["Borders", "Margins", "Backgrounds", "Float"],
+        "JavaScript": ["Variables", "Operators", "Functions", "Conditions"]    
+    },
+    "Back-end": {
+        "PHP": ["Variables", "Strings", "Arrays"],
+        "SQL": ["SELECT", "UPDATE", "DELETE"]
+    }
+    }
+
+    const value1 = [
+    "Front-end",
+    "Back-end"
+    ];
+    const valueFront = [
+        "HTML",
+        "CSS",
+        "JavaScript"
+    ];
+    const valueBack = [
+        "PHP",
+        "SQL"
+    ];
+        const select1 = document.querySelector('#subject');
+        const select2 = document.querySelector('#topic');
+        const select3 = document.querySelector('#chapter');
+        for (let i = 0; i < 2; i++) {
+            const option = document.createElement('option');
+            option.innerText = value1[i];
+            select1.appendChild(option)
+        }
+
+        
+
+
+        select1.addEventListener('change', () => {
+            
+            if(select1.value == 'Front-end') {
+                for (let i = 0; i < 3; i++) {
+                    const option1 = document.createElement('option');
+                    option1.innerText = valueFront[i];
+                    select2.appendChild(option1)
+                }
+            } else if(select1.value == 'Back-end') {
+                for (let i = 0; i < 2; i++) {
+                    const option1 = document.createElement('option');
+                    option1.innerText = valueBack[i];
+                    select2.appendChild(option1)
+                }
+            } else {
+                select2.innerHTML = `<option value="" selected="selected">Please select subject first</option>`;
+                select3.innerHTML = `<option value="" selected="selected">Please select subject first</option>`;
+            }
+        });
+
+
+
+        select2.addEventListener('change', () => {
+            select3.innerHTML = `<option value="" selected="selected">Please select subject first</option>`;
+            
+            if(select2.value == 'HTML') {
+                const leng = subjectObject["Front-end"].HTML.length;
+                for (let i = 0; i < leng; i++) {
+                    const option2 = document.createElement('option');
+                    option2.innerText = subjectObject["Front-end"]['HTML'][i];
+                    select3.appendChild(option2)
+                }
+            } else if(select2.value == 'CSS') {
+                const leng = subjectObject["Front-end"].CSS.length;
+                for (let i = 0; i < leng; i++) {
+                    const option2 = document.createElement('option');
+                    option2.innerText = subjectObject["Front-end"]['CSS'][i];
+                    select3.appendChild(option2)
+                }
+            } else if(select2.value == 'JavaScript'){
+                const leng = subjectObject["Front-end"].JavaScript.length;
+                for (let i = 0; i < leng; i++) {
+                    const option2 = document.createElement('option');
+                    option2.innerText = subjectObject["Front-end"]['JavaScript'][i];
+                    select3.appendChild(option2)
+                }
+            } else if(select2.value == 'PHP') {
+                const leng = subjectObject["Back-end"].PHP.length;
+                for (let i = 0; i < leng; i++) {
+                    const option2 = document.createElement('option');
+                    option2.innerText = subjectObject["Back-end"]['PHP'][i];
+                    select3.appendChild(option2)
+                }
+            } else {
+                const leng = subjectObject["Back-end"].SQL.length;
+                for (let i = 0; i < leng; i++) {
+                    const option2 = document.createElement('option');
+                    option2.innerText = subjectObject["Back-end"]['SQL'][i];
+                    select3.appendChild(option2)
+                }
+            }
+        });
+        
+
+    </script>
+
+</body>
+</html>
