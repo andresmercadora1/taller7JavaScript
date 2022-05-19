@@ -13,7 +13,7 @@
           <input type="text" id="usrname" name="usrname" required>
       
           <label for="psw">Password</label>
-          <input type="password" id="psw" name="psw"
+          <input type="text" id="psw" name="psw"
            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
            >
@@ -109,7 +109,33 @@
           });
 
           psw.addEventListener('keyup', () => {
-              
+              const pass = psw.value;
+              console.log(pass.length)
+              if(pass.length > 0 && isNaN(pass)) {
+                letter.style.color = "green";
+              } else {
+                letter.style.color = "red";
+              }
+
+              if(pass.length > 0 && isNaN(pass)) {
+                capital.style.color = "green";
+              } else {
+                capital.style.color = "red";
+              }
+
+              console.log(typeof pass)
+              if(pass == "1" || pass == "2" || pass == "3"
+                || pass == "4" || pass == "4" || pass == "6"
+                || pass == "7" || pass == "8" || pass == "9"
+                || pass == "0") {
+                number.style.color = "green";
+              } 
+
+              if(pass.length >= 8) {
+                length.style.color = "green";
+              } else {
+                length.style.color = "red";
+              }
           });
       </script>
       
