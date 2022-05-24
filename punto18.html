@@ -141,17 +141,29 @@ input {
 <script>
 
     const myInput = document.querySelector('#myInput');
+    const addBtn = document.querySelector('.addBtn');
     const myUL = document.querySelector('#myUL');
 
-    const text = [];
+    
+    myInput.addEventListener('keyup', (e) => {
+      const text = [];
+        text.push(myInput.value);
 
-    myInput.addEventListener('keyup', () => {
-        text.push(`<li>${myInput.values}</li>`);
+        if (e.key === "Enter") {
+            const li = document.createElement('li');
+            li.innerHTML = text;
+            myUL.append(li);
+        }
     });
 
-    myInput.addEventListener('keypress', () => {
-        myUL.innerHTML=text;
-    })
+    addBtn.addEventListener('click', (e) => {
+      const text = [];
+        text.push(myInput.value);
+            const li = document.createElement('li');
+            li.innerHTML = text;
+            myUL.append(li);
+    });
+    
 
 </script>
 

@@ -38,43 +38,33 @@
     }
     }
 
-    const value1 = [
-    "Front-end",
-    "Back-end"
-    ];
-    const valueFront = [
-        "HTML",
-        "CSS",
-        "JavaScript"
-    ];
-    const valueBack = [
-        "PHP",
-        "SQL"
-    ];
+   
+  
+
         const select1 = document.querySelector('#subject');
         const select2 = document.querySelector('#topic');
         const select3 = document.querySelector('#chapter');
-        for (let i = 0; i < 2; i++) {
+
+        for (let key in subjectObject) {
             const option = document.createElement('option');
-            option.innerText = value1[i];
+            option.innerText = key;
             select1.appendChild(option)
         }
 
-        
-
-
         select1.addEventListener('change', () => {
-            
+            select2.innerHTML = `<option value="" selected="selected">Please select subject first</option>`;
+                select3.innerHTML = `<option value="" selected="selected">Please select subject first</option>`;
             if(select1.value == 'Front-end') {
-                for (let i = 0; i < 3; i++) {
+                for (let keyF in subjectObject["Front-end"]) {
                     const option1 = document.createElement('option');
-                    option1.innerText = valueFront[i];
+                    option1.innerText = keyF;
                     select2.appendChild(option1)
                 }
+                
             } else if(select1.value == 'Back-end') {
-                for (let i = 0; i < 2; i++) {
+                for (let keyB in subjectObject["Back-end"]) {
                     const option1 = document.createElement('option');
-                    option1.innerText = valueBack[i];
+                    option1.innerText = keyB;
                     select2.appendChild(option1)
                 }
             } else {

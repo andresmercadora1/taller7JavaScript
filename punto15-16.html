@@ -37,9 +37,40 @@ body {
 <div style="background-color:lightgrey;padding:30px 30px 2500px">This example demonstrates how to create a "scroll to top" button that becomes visible 
   <strong>when the user starts to scroll the page</strong>.</div>
 
+ 
 
 <script>
-    
+  var last_known_scroll_position = 0;
+  var ticking = false;
+  const myBtn = document.querySelector('#myBtn');
+
+  const div = document.querySelectorAll('div');
+
+  function doSomething(scroll_pos) {
+    if(scroll_pos >= 644.7999877929688) {
+        div[1].style.backgroundColor = "orange";
+        myBtn.style.display = 'block';
+    } else {
+        div[1].style.backgroundColor = "lightgrey";
+        myBtn.style.display = 'none';
+    }
+  }
+
+  myBtn.addEventListener('click', () => {
+    window.scrollTo(0,0);
+  })
+
+  window.addEventListener('scroll', function(e) {
+    last_known_scroll_position = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        doSomething(last_known_scroll_position);
+        ticking = false;
+      });
+    }
+    ticking = true;
+  });
 </script>
+
 </body>
 </html>
