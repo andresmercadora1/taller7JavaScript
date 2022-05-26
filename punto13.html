@@ -110,32 +110,13 @@
 
           psw.addEventListener('keyup', () => {
               const pass = psw.value;
-              console.log(pass.length)
-              if(pass.length > 0 && isNaN(pass)) {
-                letter.style.color = "green";
-              } else {
-                letter.style.color = "red";
-              }
-
-              if(pass.length > 0 && isNaN(pass)) {
-                capital.style.color = "green";
-              } else {
-                capital.style.color = "red";
-              }
-
-              console.log(typeof pass)
-              if(pass == "1" || pass == "2" || pass == "3"
-                || pass == "4" || pass == "4" || pass == "6"
-                || pass == "7" || pass == "8" || pass == "9"
-                || pass == "0") {
-                number.style.color = "green";
-              } 
-
-              if(pass.length >= 8) {
-                length.style.color = "green";
-              } else {
-                length.style.color = "red";
-              }
+              
+              
+              (/[a-z]/.test(pass)) ? letter.style.color = "green" : letter.style.color = "red";
+              (/[A-Z]/.test(pass)) ? capital.style.color = "green" : capital.style.color = "red";
+              (/[0-9]/.test(pass)) ? number.style.color = "green" : number.style.color = "red";
+              (pass.length >= 8) ? length.style.color = "green" : length.style.color = "red";
+              
           });
       </script>
       
